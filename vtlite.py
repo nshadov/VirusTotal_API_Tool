@@ -8,9 +8,12 @@
 import json, urllib, urllib2, argparse, hashlib, re, sys
 from pprint import pprint
 
+
 class vtAPI():
     def __init__(self):
-        self.api = '<--------------PUBLIC-API-KEY-GOES-HERE----->'
+        your_public_api_key = '<--------------PUBLIC-API-KEY-GOES-HERE----->'
+        assert "KEY-GOES-HERE" not in your_public_api_key
+        self.api = your_public_api_key
         self.base = 'https://www.virustotal.com/vtapi/v2/'
     
     def getReport(self,md5):
