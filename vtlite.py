@@ -11,11 +11,14 @@ from pprint import pprint
 
 class vtAPI():
     def __init__(self):
-        your_public_api_key = '<--------------PUBLIC-API-KEY-GOES-HERE----->'
-        assert "KEY-GOES-HERE" not in your_public_api_key
-        self.api = your_public_api_key
-        self.base = 'https://www.virustotal.com/vtapi/v2/'
-    
+        try:
+            your_public_api_key = '<--------------PUBLIC-API-KEY-GOES-HERE----->'
+            assert "KEY-GOES-HERE" not in your_public_api_key
+            self.api = your_public_api_key
+            self.base = 'https://www.virustotal.com/vtapi/v2/'
+        except AssertionError:
+            raise ValueError("Private API key not provided.")
+
     def getReport(self,md5):
         param = {'resource':md5,'apikey':self.api}
         url = self.base + "file/report"
